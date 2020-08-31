@@ -9,14 +9,16 @@ USER_EMAIL="ctheunissen@ayms.co.za"
 git config --global user.name $USER_NAME
 git config --global user.email $USER_EMAIL
 
+# Reload package database
+sudo apt-get update
+sudo apt-get -y upgrade
+
 # Add repos for nodejs 10
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
-# Install nodejs for repo version
-sudo apt-get install -y nodejs
+# Install nodejs / build-tools / ffmpeg
+sudo apt-get install -y nodejs build-essential ffmpeg
 
-# Install build tools
-sudo apt-get install -y build-essential ffmpeg
 # Update npm
 sudo npm update -g npm
 
@@ -36,10 +38,6 @@ wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add 
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 # Ubuntu 18.04 (Bionic)
 # echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-
-
-# Reload package database
-apt-get update
 
 # Install MongoDB packages
 sudo apt-get install -y mongodb-org
