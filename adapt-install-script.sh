@@ -13,10 +13,10 @@ git config --global user.email $USER_EMAIL
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 
 # Install nodejs for repo version
-apt-get install -y nodejs
+sudo apt-get install -y nodejs
 
 # Install build tools
-apt-get install -y build-essential
+sudo apt-get install -y build-essential
 
 # Update npm
 npm update -g npm
@@ -42,7 +42,7 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongod
 apt-get update
 
 # Install MongoDB packages
-apt-get install -y mongodb-org
+sudo apt-get install -y mongodb-org
 
 # To prevent unintended upgrades of MongoDB, pin the package at installed version:
 echo "mongodb-org hold" | sudo dpkg --set-selections
@@ -61,7 +61,7 @@ echo "mongodb-org-tools hold" | sudo dpkg --set-selections
 # ulimit -u (processes/threads): 64000
 
 # Start MongoDB - systemd (systemctl)
-systemctl start mongod
+sudo systemctl start mongod
 # If error "Failed to start mongod.service: Unit mongod.service not found" :
 # sudo systemctl daemon-reload
 # ... then rerun command
@@ -70,7 +70,7 @@ systemctl start mongod
 systemctl status mongod
 
 # Set MongoDB to start on boot
-systemctl enable mongod
+sudo systemctl enable mongod
 
 # To stop MongoDB
 # sudo systemctl stop mongod
