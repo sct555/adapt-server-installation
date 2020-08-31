@@ -24,7 +24,7 @@ sudo npm update -g npm
 
 # Install Grunt / Grunt CLI
 sudo npm install -g grunt
-sudo npm install -g grunt-cli
+#sudo npm install -g grunt-cli
 
 # MongoDB installation
 # Import public key used by package management system
@@ -40,6 +40,7 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb
 # echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 
 # Install MongoDB packages
+sudo apt-get update
 sudo apt-get install -y mongodb-org
 
 # To prevent unintended upgrades of MongoDB, pin the package at installed version:
@@ -84,7 +85,7 @@ cd ~/adapt_authoring/
 sudo npm install --production
 
 # Run the install script
-node install
+sudo node install
 
 # echo "Show software versions:"
 # git --version
