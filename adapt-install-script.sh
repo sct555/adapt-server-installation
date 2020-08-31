@@ -82,7 +82,7 @@ cd ~
 git clone https://github.com/adaptlearning/adapt_authoring.git
 
 # Install required npm packages
-cd ~/adapt_learning
+cd ~/adapt_authoring/
 npm install --production
 
 # Run the install script
