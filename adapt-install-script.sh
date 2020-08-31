@@ -1,5 +1,6 @@
 #!/bin/bash
 # Installation script for Adapt Server on Ubuntu Server 20.04 (AWS EC2 AMI Ubuntu "ubuntu-focal-20.04-amd64-server-20200729)
+# git clone https://github.com/sct555/adapt-server-installation.git
 
 # Set variables
 USER_NAME="Craig Theunissen"
@@ -17,14 +18,15 @@ sudo apt-get -y upgrade
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 # Install nodejs / build-tools / ffmpeg
-sudo apt-get install -y nodejs build-essential ffmpeg
+sudo apt-get install -y build-essential ffmpeg
+sudo apt-get install -y nodejs
 
 # Update npm
 sudo npm update -g npm
 
 # Install Grunt / Grunt CLI
-sudo npm install -g grunt
-#sudo npm install -g grunt-cli
+#sudo npm install -g grunt
+sudo npm install -g grunt-cli
 
 # MongoDB installation
 # Import public key used by package management system
