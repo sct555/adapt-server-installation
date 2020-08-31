@@ -16,7 +16,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 apt-get install -y nodejs
 
 # Install build tools
-apt-get install build-essential
+apt-get install -y build-essential
 
 # Update npm
 npm update -g npm
@@ -82,7 +82,7 @@ cd ~
 git clone https://github.com/adaptlearning/adapt_authoring.git
 
 # Install required npm packages
-cd adaptlearning
+cd ~/adapt_learning
 npm install --production
 
 # Run the install script
@@ -99,6 +99,6 @@ mongod --version
 grunt --version
 adapt --version
 
-echo "Installation complete"
+echo ""
 echo "Type 'node server' to start Adapt Server"
 
