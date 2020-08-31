@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installation script for Adapt Server on Ubuntu Server 18.04 (AWS EC2 AMI Ubuntu "ubuntu-focal-20.04-amd64-server-20200729)
+# Installation script for Adapt Server on Ubuntu Server 20.04 (AWS EC2 AMI Ubuntu "ubuntu-focal-20.04-amd64-server-20200729)
 
 # Set variables
 USER_NAME="Craig Theunissen"
@@ -10,19 +10,19 @@ git config --global user.name $USER_NAME
 git config --global user.email $USER_EMAIL
 
 # Add repos for nodejs 10
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 # Install nodejs for repo version
 sudo apt-get install -y nodejs
 
 # Install build tools
-sudo apt-get install -y build-essential
-
+sudo apt-get install -y build-essential ffmpeg
 # Update npm
-npm update -g npm
+sudo npm update -g npm
 
-# Install Grunt CLI
-npm install -g grunt-cli
+# Install Grunt / Grunt CLI
+sudo npm install -g grunt
+sudo npm install -g grunt-cli
 
 # MongoDB installation
 # Import public key used by package management system
@@ -35,7 +35,7 @@ wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add 
 # Ubuntu 20.04 (Focal)
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 # Ubuntu 18.04 (Bionic)
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+# echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 
 
 # Reload package database
@@ -83,21 +83,21 @@ git clone https://github.com/adaptlearning/adapt_authoring.git
 
 # Install required npm packages
 cd ~/adapt_authoring/
-npm install --production
+sudo npm install --production
 
 # Run the install script
 node install
 
-echo "Show software versions:"
-git --version
-node --version
-nodist --version
-nvm --version
-npm --version
-ffmpeg --version
-mongod --version
-grunt --version
-adapt --version
+# echo "Show software versions:"
+# git --version
+# node --version
+# nodist --version
+# nvm --version
+# npm --version
+# ffmpeg --version
+# mongod --version
+# grunt --version
+# adapt --version
 
 echo ""
 echo "Type 'node server' to start Adapt Server"
