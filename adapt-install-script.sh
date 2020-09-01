@@ -1,6 +1,8 @@
 #!/bin/bash
 # Installation script for Adapt Server on Ubuntu Server 20.04 (AWS EC2 AMI Ubuntu "ubuntu-focal-20.04-amd64-server-20200729)
 # git clone https://github.com/sct555/adapt-server-installation.git
+# server port: 5000
+# database server port: 27017
 
 # Set variables
 USER_NAME="Craig Theunissen"
@@ -13,16 +15,17 @@ git config --global user.email $USER_EMAIL
 # Reload package database
 sudo apt-get update
 sudo apt-get -y upgrade
+sudo apt-get install -y build-essential ffmpeg
 
 # Add repos for nodejs 10
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 # Install nodejs / build-tools / ffmpeg
-sudo apt-get install -y build-essential ffmpeg
+sudo apt-get update
 sudo apt-get install -y nodejs
 
 # Update npm
-sudo npm update -g npm
+npm update -g npm
 
 # Install Grunt / Grunt CLI
 #sudo npm install -g grunt
@@ -84,10 +87,12 @@ git clone https://github.com/adaptlearning/adapt_authoring.git
 
 # Install required npm packages
 cd ~/adapt_authoring/
-sudo npm install --production
+npm install --production
+
+npm audit fix
 
 # Run the install script
-sudo node install
+node install
 
 # echo "Show software versions:"
 # git --version
@@ -102,4 +107,4 @@ sudo node install
 
 echo ""
 echo "Type 'node server' to start Adapt Server"
-
+echo "Remember to open port 5000 if this is an EC2 instance"
